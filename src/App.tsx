@@ -1,5 +1,11 @@
-const App = () => {
-	return <div className='bg-sky-500'>This is the home page!</div>
+import ButtonComponent from './components/buttonComponent.tsx'
+
+const App = (): React.JSX.Element => {
+	return (
+		<div>
+			<ButtonComponent name={'1'} value={1} />
+		</div>
+	)
 }
 
 export default App
