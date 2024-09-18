@@ -1,4 +1,5 @@
-import { KeyboardEvent, useState } from 'react'
+import { KeyboardEvent, useContext } from 'react'
+import { PressedKeyContext } from '../contexts/PressedKeyContext.tsx'
 
 interface buttonParamType {
 	name: string
@@ -9,7 +10,7 @@ const ButtonComponent = ({
 	name,
 	value
 }: buttonParamType): React.JSX.Element => {
-	const [pressedKey, setPressedKey] = useState<string>('')
+	const { pressedKey, setPressedKey } = useContext(PressedKeyContext)
 
 	const keyDownHandler = (e: KeyboardEvent): void => {
 		e.preventDefault()
@@ -21,6 +22,14 @@ const ButtonComponent = ({
 		setPressedKey('')
 	}
 
+	const pressedKeyHandler = (name: string): string => {
+		if (pressedKey === name) {
+			return 'bg-cyan-700 shadow-none'
+		} else {
+			return ''
+		}
+	}
+
 	return (
 		<>
 			<button
@@ -28,7 +37,7 @@ const ButtonComponent = ({
 				value={value}
 				onKeyDown={(e: KeyboardEvent): void => keyDownHandler(e)}
 				onKeyUp={(e: KeyboardEvent): void => keyUpHandler(e)}
-				className={`size-16 bg-stone-700 text-stone-200 rounded-lg shadow-lg ${pressedKey === name ? 'shadow-none' : ''} shadow-stone-700 transition-all ease-in duration-75`}
+				className={`size-16 bg-stone-700 active:bg-cyan-700 text-stone-200 rounded-lg shadow-lg ${pressedKeyHandler(name)} shadow-stone-700 active:shadow-none transition-shadow duration-75 ease-in`}
 			>
 				{name}
 			</button>
