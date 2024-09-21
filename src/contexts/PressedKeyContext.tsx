@@ -1,15 +1,21 @@
 import React, { createContext, useState } from 'react'
 
 interface TypeContext {
-	pressedKey?: string
-	setPressedKey: React.Dispatch<React.SetStateAction<string>>
+	pressedKey: string
+	//setPressedKey: React.Dispatch<React.SetStateAction<string>>
+	setPressedKey: (pressedKey: string) => void
+}
+
+const defaultState = {
+	pressedKey: '',
+	setPressedKey: (): void => {}
 }
 
 interface typeProps {
 	children?: React.ReactNode
 }
 
-const PressedKeyContext = createContext<TypeContext | undefined>(undefined)
+const PressedKeyContext = createContext<TypeContext>(defaultState)
 
 const PressedKeyContextProvider = ({
 	children
