@@ -11,8 +11,14 @@ body {
   align-items: center;
   font-family: 'Poppins';
   min-height: 100vh;
+  background-color: #222823;
 }
 
 button {
+  font-family: inherit;
+  font-weight: bold;
+}
+
+input {
   font-family: inherit;
 }
