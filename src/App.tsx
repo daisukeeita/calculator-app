@@ -1,6 +1,7 @@
 import React from 'react'
 import ButtonComponent from './components/buttonComponent.tsx'
 import InputComponent from './components/inputComponent.tsx'
+import TestComponent from './test-app/testComponent.tsx'
 
 const buttonName = [
 	['/', '*', '-'],
@@ -14,7 +15,7 @@ const buttonName = [
 const App = (): React.JSX.Element => {
 	return (
 		<div>
-			<div>
+			{/* <div>
 				<InputComponent />
 			</div>
 			<div>
@@ -23,7 +24,9 @@ const App = (): React.JSX.Element => {
 						<ButtonComponent key={i} name={el} value={el} />
 					)
 				)}
-			</div>
+			</div> */}
+
+			<TestComponent />
 		</div>
 	)
 }
